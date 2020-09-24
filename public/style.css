@@ -90,7 +90,6 @@ li.me {
     float: right;
     border-top-left-radius: 18px;
     border-bottom-right-radius: 0px;
-    margin-top: 0;
 }
 
 .date {
@@ -101,9 +100,6 @@ li.me {
 .username {
     font-weight: 700;
     float: left;
-}
-
-.message {
 }
 
 .date.right {
@@ -146,8 +142,6 @@ input[name=update]:hover, button[name=submit]:hover {
     font-weight: 700;
     font-size: 12px;
 }
-
-
 
 /* Tablet */
 @media only screen and (min-width: 650px) {
