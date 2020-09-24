@@ -58,9 +58,6 @@ class ChatUI {
         // Scroll to bottom
         let ulMessages = document.querySelector('.messages');
         ulMessages.scrollTop = ulMessages.scrollHeight;
-
-        
-
     }
 
     formatDate(date) {
