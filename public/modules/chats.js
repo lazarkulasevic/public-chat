@@ -55,7 +55,9 @@ class Chatroom {
         .onSnapshot(snapshot => {
             snapshot.docChanges().forEach(change => {
                 if (change.type == 'added') {
-                    callback(change.doc.data());
+                    callback(change.doc.data(), change.doc.id);
+                } else if (change.type == 'removed') {
+                    document.querySelector(`div[data-id='${change.doc.id}']`).parentElement.remove();
                 }
             });
         });

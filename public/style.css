@@ -10,12 +10,11 @@
 body {
     background-color: #dadada;
     position: relative;
-    max-height: 100vh;
+    transition: .3s;
 }
 
 header {
     width: 100%;
-    background-color: #18141a;
     background: #8fd3f4; 
     background-image: linear-gradient(120deg, #84fab0 0%, #8fd3f4 100%);
     box-shadow: 2px 0 5px #8a8a8a;
@@ -47,7 +46,7 @@ header p {
     width: calc(50% - 10px);
     background-color: #5a65cf;
     padding: 10px;
-    color: #fff;
+    color: #ffffff;
     text-align: center;
     border-radius: 25px;
     font-size: 18px;
@@ -59,6 +58,7 @@ header p {
 }
 
 .menu li:active {
+    color: #ececec;
     box-shadow: inset -2px -2px 5px 2px #5983f5, inset 2px 2px 5px 2px #374775;
 }
 
@@ -146,7 +146,7 @@ form {
     justify-content: center;
 }
 
-input[name=username], textarea {
+input[name=username], textarea, input[name=color], .inputDate {
     padding: 10px;
     margin: 5px;
     width: 200px;
@@ -155,6 +155,18 @@ input[name=username], textarea {
     background-color: #ffffff2c;
     font-size: inherit;
     height: 40px;
+}
+
+input[name=color] {
+    cursor: pointer;
+    width: 90px;
+}
+
+.inputDate {
+    width: 26.5%;
+    font-size: 10px;
+    padding: 2px;
+    cursor: pointer;
 }
 
 textarea {
@@ -174,7 +186,15 @@ textarea:focus, input:focus, input[name=update], button[type=submit] {
     outline: none;
 }
 
-input[name=update], button[type=submit] {
+.delete {
+    float: right;
+    user-select: none;
+    cursor: pointer;
+    font-size: 22px;
+    color: #818181;
+}
+
+input[name=update], button[type=submit], #updateColor, #setDates, #resetColor {
     padding: 5px;
     margin: 5px;
     width: 100px;
@@ -188,14 +208,31 @@ input[name=update], button[type=submit] {
     box-shadow: -1px -1px 3px 1px #85f5e6, 1px 1px 2px 1px #102564;
 }
 
-.input[name=update]:active, button[type=submit]:active {
-    box-shadow: inset -1px -1px 3px #116eb9, inset 1px 1px 3px 1px #193999!important;
+#updateColor {
+    border: none!;
+}
+
+.input[name=update]:active, button[type=submit]:active, #updateColor:active, #resetColor:active {
+    box-shadow: inset -1px -1px 3px 1px #116eb9, inset 1px 1px 3px 1px #193999!important;
     text-shadow: -2px -2px white;
     color: transparent;
 }
 
-input[name=update]:hover, button[type=submit]:hover {
+input[name=update]:hover, button[type=submit]:hover, #updateColor:hover {
     background-color: #404cbb;
+}
+
+#resetColor {
+    background-color: #05c7964b;
+    box-shadow: -1px -1px 2px 1px #92e7dc, 1px 1px 1px 1px #0d5779;
+}
+
+#resetColor:active {
+    box-shadow: inset -1px -1px 2px 1px #9debe7, inset 1px 1px 3px 1px #0f9ba5!important;
+}
+
+#resetColor:hover {
+    background-color: #05c79696;
 }
 
 #alert {
@@ -203,6 +240,27 @@ input[name=update]:hover, button[type=submit]:hover {
     font-weight: 700;
     font-size: 12px;
     margin-bottom: 8px;
+}
+
+.developer {
+    text-align: center;
+    font-weight: 700;
+    margin-bottom: 30px;
+}
+
+.developer span {
+    color: #2251ee;
+    font-size: 20px;
+}
+
+.developer a {
+    color: #2251ee;
+    text-decoration: none;
+}
+
+.developer a:hover {
+    color: #0c34b8;
+    text-decoration: underline;
 }
 
 /* Tablet */
@@ -243,6 +301,17 @@ input[name=update]:hover, button[type=submit]:hover {
         width: 400px;
     }
 
+    input[name=color] {
+        width: 294px;
+    }
+
+    .inputDate {
+        width: 196px;
+        font-size: 14px;
+        padding: 2px 20px;
+        color: #535353;
+    }
+
     textarea {
         width: 400px;
     }
@@ -270,7 +339,7 @@ input[name=update]:hover, button[type=submit]:hover {
     .messages li {
         width: 500px;
     }
-
+    
     .col-1{width:8.33%}.col-2{width:16.66%}.col-3{width:25%}
     .col-4{width:33.33%}.col-5{width:41.66%}.col-6{width:50%}
     .col-7{width:58.33%}.col-8{width:66.66%}.col-9{width:75%}

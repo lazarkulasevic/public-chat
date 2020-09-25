@@ -4,6 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chat Project</title>
+    <meta property="og:title" content="Public Chat">
+    <meta property="og:url" content="https://lazars-chat.web.app">
+    <meta property="og:type" content="website">
+    <meta property="og:description" content="Public Chat built from scratch by Lazar Kulasevic, using HTML5, CSS3 & vanilla JavaScript. Enter your name and say hi :)">
+    <meta property="og:image" content="https://lazars-chat.web.app/images/chat-screen.png">
+
+    <meta name="twitter:title" content="Public Chat">
+    <meta name="twitter:description" content="Public Chat built from scratch by Lazar Kulasevic, using HTML5, CSS3 & vanilla JavaScript. Enter your name and say hi :)">
+    <meta name="twitter:image" content="https://lazars-chat.web.app/images/chat-screen.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:creator" content="@LazarKul">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -24,12 +37,20 @@
     </header>
 
     <section class="col-12 col-t-12 chat">
-        <ul class="messages">
-            <!-- <li>Napiši neku poruku</li> -->
-        </ul>
+        <ul class="messages"></ul>
     </section>
 
     <footer class="col-12 col-t-12">
+        <div class="input-wrapper">
+            <input class="fa fa-undo" type="button" id="resetColor" value="&#xf0e2">
+            <input type="color" name="color" id="colorpicker">
+            <input type="button" id="updateColor" value="Update Color">
+        </div>
+        <div class="input-wrapper">
+            <input type="date" name="datefrom" class="inputDate">
+            <input type="date" name="dateto" class="inputDate">
+            <input type="button" id="setDates" value="Filter by date">
+        </div>
         <div class="input-wrapper">
             <form id="send">
                 <textarea type="text" id="message" autocomplete="off" placeholder="Your message..."></textarea>
@@ -41,6 +62,9 @@
             <input type="button" name="update" value="Update">
         </div>
         <div id="alert"></div>
+        <div class="developer">
+            Created with <span>&hearts;</span> by <a href="https://github.com/lazarkulasevic">Lazar Kulasevic</a>.
+        </div>
     </footer>
 
     <!-- ########################## SCRIPTS ########################## -->
@@ -70,5 +94,4 @@
 
     <script type="module" src="app.js"></script>
 </body>
-
 </html>

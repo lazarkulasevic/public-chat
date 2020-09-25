@@ -15,7 +15,7 @@ class ChatUI {
         this.ul.innerHTML = '';
     }
 
-    templateLI(doc) {
+    templateLI(doc, id) {
         let date = doc.created_at.toDate();
         let now = new Date();
 
@@ -29,19 +29,21 @@ class ChatUI {
             dateTime = `${this.formatDate(date)} at ${hours}:${minutes}`;
         }
 
-        // Align messages
+        // Align messages &#128465;
         let currentUser = localStorage.getItem('username');
         let htmlLi;
         if (doc.username == currentUser) {
             htmlLi = 
             `<li class="me">
                 <div class="username">${doc.username}:&nbsp;</div>
+                <div class="delete fa fa-trash" data-id="${id}"></div>
                 <div class="message">${doc.message}</div>
                 <div class="date right">${dateTime}</div>
             </li>`;
         } else {
             htmlLi = 
-            `<li>
+            `<li class="other">
+                <div class="delete fa fa-trash" data-id="${id}"></div>
                 <div class="date">${dateTime}</div>
                 <div class="username">${doc.username}:&nbsp;</div>
                 <div class="message">${doc.message}</div>
@@ -60,7 +62,7 @@ class ChatUI {
 
     formatDate(date) {
         let day = date.getDate();
-        let month = date.getMonth();
+        let month = date.getMonth() + 1;
         let year = date.getFullYear();
 
         day = day.toString().padStart(2, "0");
