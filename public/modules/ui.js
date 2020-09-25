@@ -31,7 +31,6 @@ class ChatUI {
 
         // Align messages
         let currentUser = localStorage.getItem('username');
-
         let htmlLi;
         if (doc.username == currentUser) {
             htmlLi = 
@@ -48,7 +47,6 @@ class ChatUI {
                 <div class="message">${doc.message}</div>
             </li>`;
         }
-        
         this.ul.innerHTML += htmlLi;
 
         // Update username placeholder
