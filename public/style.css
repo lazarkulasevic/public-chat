@@ -1,7 +1,7 @@
 * {
     margin: 0;
     padding: 0;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     scroll-behavior: smooth;
     box-sizing: border-box;
     overflow: auto;
@@ -29,8 +29,16 @@ header h1, header p {
     margin: 10px auto;
 }
 
+header h1 {
+    font-size: 22px;
+}
+
+header p {
+    font-size: 14px;
+}
+
 .menu {
-    margin: 0 8px;
+    margin: 4px 8px;
     list-style-type: none;
 }
 
@@ -47,15 +55,16 @@ header h1, header p {
     margin: 4px;
     -webkit-user-select: none;
     user-select: none;
+    box-shadow: -1px -1px 3px 1px #c4f3ed, 1px 1px 2px 1px #2c3a64;
 }
 
-.menu li:hover {
+.menu li:active {
     box-shadow: inset -2px -2px 5px 2px #5983f5, inset 2px 2px 5px 2px #374775;
 }
 
 .clicked {
     background-color: #4c92ec!important;
-    box-shadow: inset -2px -2px 5px 2px #5983f5, inset 2px 2px 5px 2px #374775;
+    box-shadow: inset -2px -2px 5px 2px #40bbd1, inset 2px 2px 5px 2px #374775!important;
 }
 
 .chat {
@@ -67,7 +76,19 @@ header h1, header p {
 .messages {
     height: 430px;
     padding: 10px;
-    overflow: auto;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    scrollbar-color: #16243d63 #ffffff4b;
+    scrollbar-width: thin;
+}
+
+.messages::-webkit-scrollbar {
+    background: #ffffff4b;
+    width: 6px;
+}
+   
+.messages::-webkit-scrollbar-thumb {
+    background: #16243d63;
 }
 
 .messages li { 
@@ -115,32 +136,74 @@ footer {
 }
 
 .input-wrapper {
-    margin: 20px 0 10px;
+    margin: 10px 0 0;
+    display: flex;
+    justify-content: center;
 }
 
-input[type=text] {
+form {
+    display: flex;
+    justify-content: center;
+}
+
+input[name=username], textarea {
     padding: 10px;
+    margin: 5px;
     width: 200px;
+    border: 1px solid #0099ff;
+    border-radius: 10px;
+    background-color: #ffffff2c;
+    font-size: inherit;
+    height: 40px;
+
 }
 
-input[name=update], button[name=submit] {
-    padding: 10px;
+textarea {
+    border-radius: 10px;
+    padding: 7px;
+    transition: 0.3s;
+    overflow: hidden;
+    resize: none;
+}
+
+textarea:focus {
+    height: 100px;
+    overflow: auto;
+}
+
+textarea:focus, input:focus, input[name=update], button[type=submit] {
+    outline: none;
+}
+
+input[name=update], button[type=submit] {
+    padding: 5px;
+    margin: 5px;
     width: 100px;
-    background-color: #5a65cf;
+    height: 38px;
+    background-color: #4a56be;
     color: white;
     border-radius: 4px;
     cursor: pointer;
     font-weight: 700;
+    border: none;
+    box-shadow: -1px -1px 3px 1px #85f5e6, 1px 1px 2px 1px #102564;
 }
 
-input[name=update]:hover, button[name=submit]:hover {
-    background-color: #6d78db;
+.input[name=update]:active, button[type=submit]:active {
+    box-shadow: inset -1px -1px 3px #116eb9, inset 1px 1px 3px 1px #193999!important;
+    text-shadow: -2px -2px white;
+    color: transparent;
+}
+
+input[name=update]:hover, button[type=submit]:hover {
+    background-color: #404cbb;
 }
 
 #alert {
     height: 20px;
     font-weight: 700;
     font-size: 12px;
+    margin-bottom: 8px;
 }
 
 /* Tablet */
@@ -151,12 +214,20 @@ input[name=update]:hover, button[name=submit]:hover {
         width: 100%;
     }
 
-    .menu li {
-        width: calc(25% - 8px);
-    }
-
     header {
         height: 140px;
+    }
+
+    header h1 {
+        font-size: 26px;
+    }
+    
+    header p {
+        font-size: 14px;
+    }
+
+    .menu li {
+        width: calc(25% - 8px);
     }
 
     input[type=text] {
@@ -170,6 +241,10 @@ input[name=update]:hover, button[name=submit]:hover {
     }
 
     .messages li {
+        width: 400px;
+    }
+
+    textarea {
         width: 400px;
     }
 

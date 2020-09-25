@@ -5,7 +5,7 @@ const ulMenu = document.querySelector('.menu');
 const liMenu = document.querySelectorAll('.menu li');
 const ulMessages = document.querySelector('.messages');
 const formSend = document.getElementById('send');
-const inputMessage = document.getElementById('message');
+const message = document.getElementById('message');
 const inputUsername = document.getElementById('username');
 const btnUpdate = document.querySelector('input[name=update]');
 const divAlert = document.getElementById('alert');
@@ -58,21 +58,29 @@ ulMenu.addEventListener('click', event => {
 // SEND
 formSend.addEventListener('submit', event => {
     event.preventDefault();
+    submitForm();
+});
+
+message.addEventListener('keydown', e => {
+    if (e.code == 'Enter' && !e.shiftKey) {
+        submitForm();
+    }
+});
+
+function submitForm() {
     chatroom.updateUsername(localStorage.getItem('username') || 'Guest');
-
-    if (!inputMessage.value.match(/\w/)) return; 
-
-    chatroom.addChat(inputMessage.value)
+    if (!message.value.match(/\w/)) return; 
+    chatroom.addChat(message.value)
     .then(() => formSend.reset())
     .catch(err => console.log(err));
-});
+}
 
 // USERNAME
 btnUpdate.addEventListener('click', () => {
     chatroom.updateUsername(inputUsername.value);
     if (!inputUsername.value.match(/[^\s][a-zA-Z]{2,10}/)) return;
 
-    divAlert.textContent = "Your username is updated!"
+    divAlert.textContent = "Your username is updated!";
     setTimeout(() => {
         inputUsername.value = "";
         divAlert.textContent = "";
