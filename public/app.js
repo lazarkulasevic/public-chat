@@ -20,13 +20,13 @@ const chatroom = new Chatroom(localStorage.getItem('chatroom') || 'general', loc
 const chatUI = new ChatUI(ulMessages);
 
 // Safari not supported right now
-let isSafari = /constructor/i.test(window.HTMLElement) || (p => { 
-    return p.toString() === "[object SafariRemoteNotification]"; 
-})(!window['safari'] || (typeof safari !== 'undefined' && safari.pushNotification));
+// let isSafari = /constructor/i.test(window.HTMLElement) || (p => { 
+//     return p.toString() === "[object SafariRemoteNotification]"; 
+// })(!window['safari'] || (typeof safari !== 'undefined' && safari.pushNotification));
 
-if (isSafari) {
-    document.write = "Sorry, this app is not supported by Safari browser. Try Chrome or Firefox :)"
-}
+// if (isSafari) {
+//     document.write = "Sorry, this app is not supported by Safari browser. Try Chrome or Firefox :)"
+// }
 
 // Pull messages from base
 getChatroom(chatroom, chatUI);
