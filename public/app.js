@@ -102,6 +102,7 @@ btnUpdate.addEventListener('click', () => {
     setTimeout(() => {
         inputUsername.value = "";
         divAlert.textContent = "";
+        location.reload();
     }, 3000);
 });
 
