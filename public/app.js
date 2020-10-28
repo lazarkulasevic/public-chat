@@ -19,14 +19,13 @@ const setDates = document.getElementById('setDates');
 const chatroom = new Chatroom(localStorage.getItem('chatroom') || 'general', localStorage.getItem('username') || 'Guest');
 const chatUI = new ChatUI(ulMessages);
 
-// Safari not supported right now
-// let isSafari = /constructor/i.test(window.HTMLElement) || (p => { 
-//     return p.toString() === "[object SafariRemoteNotification]"; 
-// })(!window['safari'] || (typeof safari !== 'undefined' && safari.pushNotification));
-
-// if (isSafari) {
-//     document.write = "Sorry, this app is not supported by Safari browser. Try Chrome or Firefox :)"
-// }
+// Safari does not support Push API
+if (navigator.userAgent.indexOf('Safari') != -1 && navigator.userAgent.indexOf('Chrome') == -1) {
+    if (confirm(`I am very sorry to inform you that
+    Safari does not support cloud messaging right now!\\To go back press OK.`)) {
+        history.back();
+    }
+}
 
 // Pull messages from base
 getChatroom(chatroom, chatUI);
